@@ -1,7 +1,22 @@
-<h1>{{ question.question_text }}</h1>
-<ul>
+{% extends "base.html" %}
+{% block title %}Results · {{ question.question_text }}{% endblock %}
+{% block header %}Results{% endblock %}
+{% block subtitle %}{{ question.question_text }}{% endblock %}
+
+{% block content %}
+<ul class="list">
   {% for c in question.choice_set.all %}
-    <li>{{ c.choice_text }} — {{ c.votes }} vote{{ c.votes|pluralize }}</li>
+    <li class="choice" style="justify-content:space-between">
+      <span>{{ c.choice_text }}</span>
+      <span class="votes">{{ c.votes }} vote{{ c.votes|pluralize }}</span>
+    </li>
   {% endfor %}
 </ul>
-<a href="{% url 'polls:detail' question.id %}">Vote again</a>
+<div class="links">
+  <a href="{% url 'polls:detail' question.id %}">« Vote again</a>
+  &nbsp;|&nbsp;
+  <a href="{% url 'polls:index' %}">Back to polls</a>
+</div>
+{% endblock %}
+
+

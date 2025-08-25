@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Polls{% endblock %}</title>
+  <style>
+    :root{
+      --bg:#0b0914; --bg2:#120a2a;
+      --card:#1b1236; --muted:#b8b5c9; --text:#efeafd;
+      --primary:#7c3aed; --primary2:#a78bfa; --accent:#22d3ee;
+      --border:rgba(255,255,255,.12)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+         color:var(--text); background:linear-gradient(180deg,var(--bg),var(--bg2)) fixed;}
+    a{color:#c4b5fd;text-decoration:none}
+    a:hover{color:#e9d5ff}
+    .wrap{max-width:860px;margin:48px auto;padding:0 16px}
+    .card{background:rgba(255,255,255,.04);border:1px solid var(--border);
+          border-radius:16px; padding:22px; backdrop-filter: blur(6px)}
+    .header{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+    .logo{width:36px;height:36px;border-radius:12px;
+          background:conic-gradient(from 210deg,var(--primary),var(--accent),var(--primary2))}
+    h1{font-size:28px;margin:0}
+    .sub{color:var(--muted);margin:6px 0 16px}
+    .btn{appearance:none;border:0;cursor:pointer;font-weight:600;color:#fff;
+         padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary2))}
+    .btn:hover{filter:brightness(1.05)}
+    .chip{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+    .list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .item{display:block;padding:14px 16px;border-radius:12px;border:1px solid var(--border);
+          background:rgba(255,255,255,.03)}
+    .item:hover{border-color:rgba(124,58,237,.6);background:rgba(124,58,237,.08)}
+    .error{color:#fecaca;margin:8px 0}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .choice{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);
+            border-radius:10px;background:rgba(255,255,255,.03)}
+    .votes{color:#c7d2fe;font-weight:700}
+    .links{margin-top:16px}
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="logo"></div>
+      <div>
+        <h1>{% block header %}Polls{% endblock %}</h1>
+        <div class="chip">{% block subtitle %}{% endblock %}</div>
+      </div>
+    </div>
+
+    <div class="card">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</body>
+</html>
