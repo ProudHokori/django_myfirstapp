@@ -1,0 +1,8 @@
+<h1>Latest polls</h1>
+<ul>
+  {% for q in latest_question_list %}
+    <li><a href="{% url 'polls:detail' q.id %}">{{ q.question_text }}</a></li>
+  {% empty %}
+    <li>No polls are available.</li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,9 @@
+<h1>{{ question.question_text }}</h1>
+{% if error_message %}<p style="color:red">{{ error_message }}</p>{% endif %}
+<form method="post" action="{% url 'polls:vote' question.id %}">
+  {% csrf_token %}
+  {% for c in question.choice_set.all %}
+    <label><input type="radio" name="choice" value="{{ c.id }}"> {{ c.choice_text }}</label><br>
+  {% endfor %}
+  <button type="submit">Vote</button>
+</form>
